@@ -22,7 +22,7 @@ export function App() {
     setIsGuestModalOpen(true)
   }
 
-  function closeGuestModel() {
+  function closeGuestsModal() {
     setIsGuestModalOpen(false)
   }
 
@@ -46,7 +46,7 @@ export function App() {
     
     }
 
-    function removeEmailFromEmailToInvite(emailToRemove: string){
+    function removeEmailFromInvites(emailToRemove: string){
 
       const newEmaiList = emailsToInvite.filter(email => email!== emailToRemove)
       setEmailsToInvite(newEmaiList)
@@ -124,7 +124,7 @@ export function App() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">Selecionar convidados</h2>
-                <button type="button" onClick={closeGuestModel}>
+                <button type="button" onClick={closeGuestsModal}>
                   <X className="size-5 text-zinc-400" />
                 </button>
               </div>
@@ -140,7 +140,7 @@ export function App() {
                   <div key={email} className="py-1.5 px-2.5 rounded-md bg-zinc-800 flex items-center gap-2">
                     <span className="text-zinc-300">{email}</span>
                     <button type="button">
-                      <X className="size-4 text-zinc-400" onClick={()=>removeEmailFromEmailToInvite(email)                        
+                      <X className="size-4 text-zinc-400" onClick={()=>removeEmailFromInvites(email)                        
                     } />
                     </button>
                   </div>
