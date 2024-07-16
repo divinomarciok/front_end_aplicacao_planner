@@ -18,8 +18,6 @@ export function DestinationAndDateHeader() {
     const { tripId } = useParams()
     const [trip, setTrip] = useState<Trip | undefined>()
 
-
-
     useEffect(() => {
         api.get(`/trips/${tripId}`).then(response => setTrip(response.data.trip))
     }, [tripId])

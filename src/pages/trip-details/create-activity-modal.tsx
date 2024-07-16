@@ -1,5 +1,8 @@
 import { Calendar, Plus, Tag, X } from "lucide-react"
 import { Button } from "../../components/button"
+import { FormEvent } from "react"
+import { useParams } from "react-router-dom"
+import { api } from "../../lib/axios"
 
 interface CreateActiviyModalProps {
     closeCreateActivityModal: () => void
@@ -8,6 +11,29 @@ interface CreateActiviyModalProps {
 export function CreateActiviyModal({
     closeCreateActivityModal
 }: CreateActiviyModalProps) {
+
+    const { tripId } = useParams()
+
+    
+
+    async function creatActivity(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+
+        const data = new FormData(event.currentTarget)
+
+        const title = data.get('title')?.toString()
+        const occurs_at = data.get('occurs_at')?.toString()
+
+        console.log(title, occurs_at)
+
+
+        api.post(`/trips/${tripId}/activities`, {
+            title,
+            occurs_at
+        })
+
+        window.document.location.reload()
+    }
 
     return (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
@@ -25,7 +51,7 @@ export function CreateActiviyModal({
                     </p>
                 </div>
 
-                <form className="space-y-3">
+                <form onSubmit={creatActivity} className="space-y-3">
 
                     <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
                         <Tag className="text-zinc-400 size-5" />
@@ -48,20 +74,10 @@ export function CreateActiviyModal({
                         </div>
                     </div>
 
-                    {/*<div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
-  <User className="text-zinc-400 size-5" />
-  <input
-    type="email"
-    name="email"
-    placeholder="Seu e-mail pessoal"
-    className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
-  />
-</div>*/}
-
-                   <Button variant="primary" size="full">
-                    Salvar Atividade
-                   <Plus className="size-5" />
-                   </Button>
+                    <Button variant="primary" size="full">
+                        Salvar Atividade
+                        <Plus className="size-5" />
+                    </Button>
                 </form>
             </div>
         </div>

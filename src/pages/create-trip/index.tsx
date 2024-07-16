@@ -6,7 +6,7 @@ import { DestinationAndDateStep } from "./steps/destination-and-date-step"
 import { InviteGuestsStep } from "./steps/invite-guests-step"
 import { DateRange } from "react-day-picker"
 import { api } from "../../lib/axios"
-//import axios from "axios"
+
 
 export function CreateTripPage() {
 
@@ -50,67 +50,7 @@ export function CreateTripPage() {
     setIsConfirmTripModalOpen(false)
   }
 
-  /*async function createTrip(event: FormEvent<HTMLFormElement>) {
-
-    event.preventDefault()
-    console.log(destination)
-    console.log(ownerName)
-    console.log(ownerEmail)
-    console.log(eventStartAndEndDates)
-
-    if(!destination){
-      return
-    }
-    if(!eventStartAndEndDates?.from || !eventStartAndEndDates?.to){
-      return
-    }
-    if(emailsToInvite.length == 0){
-      return
-    }
-    if(!ownerName || !ownerName){
-      return
-    }
-
-    const options = {
-      method: 'POST',
-      url: 'http://localhost:3333/trips',
-      headers: {'Content-Type': 'application/json'},
-      data: {
-        destination,
-        starts_at: eventStartAndEndDates?.from,
-        ends_at: eventStartAndEndDates?.to,
-        emails_to_invite: emailsToInvite,
-        owner_name: ownerName,
-        owner_email: ownerEmail
-  
-      }
-    };
-    
-    try {
-      const { data } = await axios.request(options);
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-
-   /*const response = await api.post('/trips',{
-     /* destination,
-      starts_at:eventStartAndEndDates?.from,
-      ends_at:eventStartAndEndDates?.to,
-      emails_to_invite: emailsToInvite,
-      owner_name: ownerName,
-      owner_email: <ownerEmail></ownerEmail>
-      destination,
-      starts_at: eventStartAndEndDates?.from,
-      ends_at: eventStartAndEndDates?.to,
-      emails_to_invite: emailsToInvite,
-      owner_name: ownerName,
-      owner_email: ownerEmail
-    })
-    //const {tripId} = response.data
-    //navigate(`/trips/${tripId}`)
-  }*/
-
+ 
 
   async function createTrip(event: FormEvent<HTMLFormElement>) {
 
